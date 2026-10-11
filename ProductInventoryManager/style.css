@@ -1,15 +1,21 @@
 
 :root {
     font-family: Inter, "Segoe UI", Arial, sans-serif;
-    color: #252b29;
-    background: #f7f8f5;
+    color: #402c33;
+    background: #fbf6f3;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    --green: #28684f;
-    --muted: #78817b;
-    --border: #e6e9e3;
-    --surface: #ffffff;
+
+    --green: #783b52;
+    --muted: #8c777d;
+    --border: #eadde0;
+    --surface: #fffcfa;
+
+    --pink: #f8e9ee;
+    --blush: #ebc3d0;
+    --burgundy: #783b52;
+    --ivory: #fbf6f3;
 }
 
 * {
@@ -19,21 +25,33 @@
 body {
     margin: 0;
     min-height: 100vh;
+    background: var(--ivory);
 }
 
-button, input, select {
+button,
+input,
+select {
     font: inherit;
 }
 
-button, a, input, select {
+button,
+a,
+input,
+select {
     -webkit-tap-highlight-color: transparent;
 }
+
+button {
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* SIDEBAR */
 
 .sidebar {
     position: fixed;
     inset: 0 auto 0 0;
     width: 238px;
-    background: #fff;
+    background: var(--surface);
     border-right: 1px solid var(--border);
     padding: 30px 20px;
     display: flex;
@@ -44,7 +62,7 @@ button, a, input, select {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #252b29;
+    color: #402c33;
     font-size: 21px;
     font-weight: 750;
     text-decoration: none;
@@ -58,14 +76,14 @@ button, a, input, select {
     width: 35px;
     height: 35px;
     border-radius: 10px;
-    background: var(--green);
+    background: var(--burgundy);
     color: white;
     font-size: 23px;
 }
 
 .nav-label {
     margin: 0 0 12px 10px;
-    color: #969d97;
+    color: #a18d93;
     font-size: 10px;
     font-weight: 750;
     letter-spacing: 1.4px;
@@ -79,13 +97,19 @@ button, a, input, select {
     margin-bottom: 5px;
     border-radius: 7px;
     text-decoration: none;
-    color: #66716a;
+    color: #79676e;
     font-size: 13px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+    background: #fff2f5;
+    color: var(--burgundy);
 }
 
 .nav-link.active {
-    background: #edf4ef;
-    color: var(--green);
+    background: var(--pink);
+    color: var(--burgundy);
     font-weight: 700;
 }
 
@@ -107,11 +131,12 @@ button, a, input, select {
     height: 37px;
     display: grid;
     place-items: center;
-    background: #e6eee7;
+    background: #f5dfe7;
     border-radius: 50%;
-    color: var(--green);
+    color: var(--burgundy);
     font-size: 12px;
     font-weight: 750;
+    flex-shrink: 0;
 }
 
 .sidebar-bottom strong,
@@ -128,6 +153,8 @@ button, a, input, select {
     font-size: 11px;
     margin-top: 4px;
 }
+
+/* MAIN LAYOUT */
 
 .main-content {
     margin-left: 238px;
@@ -149,7 +176,10 @@ button, a, input, select {
     margin: 0 0 12px;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
     margin-top: 0;
 }
 
@@ -158,6 +188,7 @@ h1 {
     letter-spacing: -0.8px;
     margin-bottom: 7px;
     font-weight: 720;
+    color: #402c33;
 }
 
 .subtitle {
@@ -170,12 +201,14 @@ h1 {
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 10px 12px;
-    color: #66716a;
-    background: white;
+    color: var(--burgundy);
+    background: var(--surface);
     font-size: 10px;
     letter-spacing: 0.8px;
     font-weight: 700;
 }
+
+/* SUMMARY CARDS */
 
 .summary-grid {
     display: grid;
@@ -190,10 +223,16 @@ h1 {
     border-radius: 9px;
     padding: 20px;
     min-width: 0;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.summary-card:hover {
+    border-color: #dfbdc9;
+    transform: translateY(-2px);
 }
 
 .summary-card p {
-    color: #66716a;
+    color: #826e75;
     font-size: 12px;
     margin-bottom: 17px;
 }
@@ -203,20 +242,23 @@ h1 {
     font-weight: 700;
     letter-spacing: -0.8px;
     margin-bottom: 9px;
+    color: #402c33;
 }
 
 .summary-card small {
-    color: #89918b;
+    color: #96848a;
     font-size: 11px;
 }
 
 .value-card h2 {
-    color: var(--green);
+    color: var(--burgundy);
     font-size: 23px;
 }
 
+/* INVENTORY PANEL */
+
 .panel {
-    background: white;
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 25px;
@@ -238,6 +280,7 @@ h1 {
     font-size: 18px;
     letter-spacing: -0.4px;
     margin-bottom: 7px;
+    color: #402c33;
 }
 
 .section-heading p,
@@ -252,12 +295,15 @@ h1 {
     padding: 7px 10px;
     border-radius: 5px;
     font-size: 11px;
-    color: #66716a;
+    color: var(--burgundy);
+    background: #fff8fa;
     white-space: nowrap;
 }
 
+/* ADD PRODUCT FORM */
+
 .add-form {
-    background: #fafbf9;
+    background: #fff7f8;
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 19px;
@@ -268,6 +314,7 @@ h1 {
 .table-toolbar h3 {
     font-size: 13px;
     margin-bottom: 6px;
+    color: #402c33;
 }
 
 .form-title p {
@@ -288,28 +335,30 @@ label {
     gap: 8px;
     font-size: 11px;
     font-weight: 650;
-    color: #535d56;
+    color: #655159;
 }
 
-input, select {
+input,
+select {
     min-width: 0;
     width: 100%;
     height: 39px;
     padding: 0 11px;
-    border: 1px solid #dfe4dc;
+    border: 1px solid #e5d3d9;
     border-radius: 6px;
-    background: white;
-    color: #29332d;
+    background: #fffcfa;
+    color: #402c33;
     font-size: 12px;
 }
 
 input::placeholder {
-    color: #a0a8a1;
+    color: #ad9ba1;
 }
 
-input:focus, select:focus {
-    outline: 2px solid #b5d3bd;
-    border-color: var(--green);
+input:focus,
+select:focus {
+    outline: 2px solid #ebc3d0;
+    border-color: var(--burgundy);
 }
 
 .form-actions {
@@ -319,7 +368,7 @@ input:focus, select:focus {
 }
 
 .primary-btn {
-    background: var(--green);
+    background: var(--burgundy);
     color: white;
     border: 0;
     border-radius: 6px;
@@ -330,13 +379,15 @@ input:focus, select:focus {
 }
 
 .primary-btn:hover {
-    background: #20543f;
+    background: #602d40;
 }
 
 .primary-btn span {
     padding-left: 8px;
     font-size: 16px;
 }
+
+/* SEARCH AND FILTERS */
 
 .table-toolbar {
     margin-bottom: 18px;
@@ -355,6 +406,8 @@ input:focus, select:focus {
     width: 120px;
 }
 
+/* PRODUCT TABLE */
+
 .table-wrap {
     width: 100%;
     overflow-x: auto;
@@ -367,7 +420,7 @@ table {
 }
 
 thead {
-    background: #f8f9f6;
+    background: #fff7f8;
 }
 
 th {
@@ -376,7 +429,8 @@ th {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.45px;
-    color: #78817b;
+    color: #8c777d;
+    background: #fff7f8;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
@@ -384,7 +438,7 @@ th {
 td {
     padding: 15px 11px;
     font-size: 12px;
-    border-bottom: 1px solid #edf0eb;
+    border-bottom: 1px solid #f0e5e8;
     white-space: nowrap;
 }
 
@@ -393,27 +447,29 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-    background: #fcfdfa;
+    background: #fff8fa;
 }
 
 .id-cell {
-    color: #89918b;
+    color: #9b878e;
     font-size: 11px;
 }
 
 .product-name {
     font-weight: 650;
-    color: #303a33;
+    color: #402c33;
 }
 
 .category-badge {
     display: inline-block;
-    background: #f0f2ee;
-    color: #66716a;
+    background: #f8e9ee;
+    color: #783b52;
     padding: 5px 8px;
     border-radius: 4px;
     font-size: 10px;
 }
+
+/* STOCK STATUS */
 
 .status {
     display: inline-block;
@@ -424,19 +480,21 @@ tbody tr:hover {
 }
 
 .available {
-    color: #276546;
-    background: #eaf4ec;
+    color: #286348;
+    background: #e8f2ea;
 }
 
 .unavailable {
-    color: #a34e3d;
-    background: #faeeea;
+    color: #963f50;
+    background: #f9e6e9;
 }
 
+/* REMOVE BUTTON */
+
 .delete-btn {
-    border: 1px solid #eadfdb;
-    background: white;
-    color: #a45b4b;
+    border: 1px solid #ead5dc;
+    background: #fffcfa;
+    color: #963f50;
     padding: 7px 9px;
     border-radius: 5px;
     font-size: 10px;
@@ -444,8 +502,11 @@ tbody tr:hover {
 }
 
 .delete-btn:hover {
-    background: #faeeea;
+    background: #f9e6e9;
+    border-color: #dfb8c5;
 }
+
+/* EMPTY STATE AND FOOTER */
 
 .empty-message {
     text-align: center;
@@ -456,7 +517,7 @@ tbody tr:hover {
 
 footer {
     padding: 23px 0 5px;
-    color: #909890;
+    color: #9a888e;
     font-size: 10px;
     text-align: center;
 }
@@ -464,6 +525,8 @@ footer {
 footer span {
     margin: 0 5px;
 }
+
+/* RESPONSIVE LAYOUT */
 
 @media (max-width: 1150px) {
     .main-content {
