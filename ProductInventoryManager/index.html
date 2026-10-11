@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple product inventory management application.">
+    <title>Stockroom — Inventory Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="dist/app.js"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="logo" href="#" aria-label="Stockroom home">
+            <span class="logo-mark">s.</span>
+            <span>stockroom</span>
+        </a>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav>
+            <a class="nav-link active" href="#overview">
+                <span class="nav-icon">▦</span> Overview
+            </a>
+            <a class="nav-link" href="#inventory">
+                <span class="nav-icon">▤</span> Inventory
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile-avatar">SM</div>
+            <div>
+                <strong>Store Manager</strong>
+                <small>Inventory admin</small>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">Workspace / Inventory</p>
+                <h1>Inventory overview</h1>
+                <p class="subtitle">Keep track of your products and stock levels.</p>
+            </div>
+            <div class="date-label">STORE INVENTORY</div>
+        </header>
+
+        <section class="summary-grid" aria-label="Inventory summary">
+            <article class="summary-card">
+                <p>Total products</p>
+                <h2 id="totalProducts">0</h2>
+                <small>Products in your catalogue</small>
+            </article>
+
+            <article class="summary-card">
+                <p>In stock</p>
+                <h2 id="inStockCount">0</h2>
+                <small>Available for sale</small>
+            </article>
+
+            <article class="summary-card">
+                <p>Out of stock</p>
+                <h2 id="outStockCount">0</h2>
+                <small>Need replenishment</small>
+            </article>
+
+            <article class="summary-card value-card">
+                <p>Inventory value</p>
+                <h2 id="inventoryValue">₹0</h2>
+                <small>Based on current quantities</small>
+            </article>
+        </section>
+
+        <section class="panel" id="inventory">
+            <div class="section-heading">
+                <div>
+                    <h2>Product inventory</h2>
+                    <p>View and manage the items in your store.</p>
+                </div>
+                <span id="productCount" class="count-label">0 products</span>
+            </div>
+
+            <form id="productForm" class="add-form">
+                <div class="form-title">
+                    <h3>Add a product</h3>
+                    <p>Enter the details below to add a new item.</p>
+                </div>
+
+                <div class="form-grid">
+                    <label>
+                        Product name
+                        <input id="name" type="text"
+                            placeholder="e.g. Wireless Headphones" required>
+                    </label>
+
+                    <label>
+                        Price (₹)
+                        <input id="price" type="number"
+                            min="0.01" step="0.01" placeholder="999" required>
+                    </label>
+
+                    <label>
+                        Quantity
+                        <input id="quantity" type="number"
+                            min="0" step="1" value="1" required>
+                    </label>
+
+                    <label>
+                        Category
+                        <select id="category" required>
+                            <option value="">Choose category</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Workspace">Workspace</option>
+                            <option value="Stationery">Stationery</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button class="primary-btn" type="submit">Add product <span>+</span></button>
+                </div>
+            </form>
+
+            <div class="table-toolbar">
+                <div>
+                    <h3>All products</h3>
+                    <p>Your current stock list</p>
+                </div>
+
+                <div class="filters">
+                    <input id="search" type="search"
+                        placeholder="Search products..." aria-label="Search products">
+
+                    <select id="stockFilter" aria-label="Filter by stock status">
+                        <option value="all">All stock</option>
+                        <option value="in">In stock</option>
+                        <option value="out">Out of stock</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Qty.</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTable"></tbody>
+                </table>
+            </div>
+
+            <p id="emptyMessage" class="empty-message" hidden>
+                No products found. Try another search or add a product.
+            </p>
+        </section>
+
+        <footer>Stockroom Inventory Manager <span>·</span> Advanced Web Technologies</footer>
+    </main>
+</body>
+</html>
